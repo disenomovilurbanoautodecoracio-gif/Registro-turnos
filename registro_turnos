@@ -26,7 +26,6 @@
   <label for="turnoHora">Hora del Turno de Ingreso:</label>
   <select id="turnoHora">
     <option value="21:00">21:00 hrs</option>
-    <!-- Puedes agregar más turnos de ingreso aquí -->
   </select>
 
   <button onclick="registrarTurno()">Registrar e Imprimir Turno de Salida</button>
@@ -46,7 +45,6 @@
 </table>
 
 <script>
-  // Definición de turnos de salida al azar según hora de entrada
   const opcionesSalida = {
     "21:00": ["23:00", "10:00", "02:15"]
   };
@@ -60,15 +58,12 @@
       return;
     }
 
-    // Obtener la hora actual de registro (ej. 20:45)
     const ahora = new Date();
     const horaRegistro = ahora.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', hour12: false });
 
-    // Elegir hora de salida al azar (a la suerte)
     const opciones = opcionesSalida[turno] || ["Sin turno asignado"];
     const salidaAsignada = opciones[Math.floor(Math.random() * opciones.length)];
 
-    // Agregar a la tabla
     const tabla = document.getElementById('tablaRegistros');
     const fila = `<tr>
       <td>${id}</td>
@@ -78,7 +73,6 @@
     </tr>`;
     tabla.innerHTML = fila + tabla.innerHTML;
 
-    // Limpiar campo
     document.getElementById('userId').value = '';
   }
 </script>
